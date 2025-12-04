@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Futuro – Give your child a financial head start</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #F9F6F1;
+      --navy: #0D2035;
+      --green: #3CC787;
+      --text-muted: #4B5563;
+      --border-subtle: rgba(148, 163, 184, 0.4);
+      --card-bg: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header.site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, var(--green), var(--navy));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #F9F6F1;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform 0.08s ease, box-shadow 0.1s ease, background 0.1s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #F9F6F1;
+      box-shadow: 0 10px 24px rgba(13, 32, 53, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(13, 32, 53, 0.26);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid rgba(13, 32, 53, 0.18);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7C828A;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 40px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      max-width: 520px;
+    }
+
+    .hero-tagline {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: #6B7280;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone-frame {
+      width: 270px;
+      border-radius: 32px;
+      padding: 14px 12px;
+      background: linear-gradient(145deg, #E7E0D5, #FDFBF7);
+      box-shadow: 0 24px 45px rgba(15, 23, 42, 0.25);
+      position: relative;
+    }
+
+    .phone-notch {
+      width: 96px;
+      height: 18px;
+      border-radius: 0 0 14px 14px;
+      background: #D9D2C6;
+      margin: 0 auto 10px;
+    }
+
+    .phone-screen {
+      background: #FFFFFF;
+      border-radius: 22px;
+      padding: 14px 14px 16px;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+    }
+
+    .child-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .child-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .child-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #FF8FA2, #A8D8FF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #F9F6F1;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .child-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .child-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .child-tag {
+      font-size: 11px;
+      color: #6B7280;
+    }
+
+    .child-pill {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: #F5EFE8;
+      color: #111827;
+    }
+
+    .balance-block {
+      margin-bottom: 10px;
+    }
+
+    .balance-label {
+      font-size: 11px;
+      color: #6B7280;
+      margin-bottom: 2px;
+    }
+
+    .balance-value {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .balance-sub {
+      font-size: 11px;
+      color: #10B981;
+    }
+
+    .mini-chart {
+      height: 70px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(60, 199, 135, 0.08), rgba(168, 216, 255, 0.24));
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .mini-chart-line {
+      position: absolute;
+      inset: 12px;
+      border-radius: 999px;
+      border: 2px solid rgba(60, 199, 135, 0.7);
+      border-bottom-left-radius: 28px;
+      border-top-right-radius: 36px;
+      border-top-left-radius: 6px;
+      border-bottom-right-radius: 12px;
+    }
+
+    .phone-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .stat-pill {
+      flex: 1;
+      background: #F5EFE8;
+      border-radius: 14px;
+      padding: 7px 8px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: #6B7280;
+      margin-bottom: 3px;
+    }
+
+    .stat-value {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .gift-btn {
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: var(--navy);
+      color: #F9F6F1;
+      border: none;
+    }
+
+    /* Sections */
+
+    section {
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9CA3AF;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 24px;
+    }
+
+    .three-cols {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 18px 16px 20px;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .info-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .info-body {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .info-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(60, 199, 135, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    /* Math section */
+
+    .math-wrap {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 18px 16px 20px;
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      max-width: 640px;
+    }
+
+    .slider-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .slider-label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .slider-value {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .math-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .math-card {
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #F5EFE8;
+    }
+
+    .math-label {
+      font-size: 12px;
+      color: #6B7280;
+      margin-bottom: 4px;
+    }
+
+    .math-value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .math-note {
+      font-size: 12px;
+      color: #6B7280;
+      margin-top: 10px;
+    }
+
+    /* Why Futuro */
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .why-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.03);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .why-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .why-body {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* CTA band */
+
+    .cta-band {
+      background: var(--navy);
+      border-radius: 22px;
+      padding: 22px 18px;
+      color: #F9F6F1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .cta-band-title {
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-band-sub {
+      font-size: 14px;
+      max-width: 440px;
+      opacity: 0.9;
+    }
+
+    .cta-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+      width: 100%;
+    }
+
+    .cta-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: none;
+      font-size: 14px;
+    }
+
+    footer {
+      font-size: 12px;
+      color: #9CA3AF;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      border-top: 1px solid rgba(148, 163, 184, 0.35);
+      padding-top: 16px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+        margin-bottom: 8px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header.site-header {
+        flex-direction: row;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .three-cols {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page {
+        padding: 18px 14px 40px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .why-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-mark">F</div>
+        <span>Futuro</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#math">The math</a>
+        <a href="#why">Why Futuro</a>
+      </nav>
+      <a href="#cta" class="btn btn-outline">Get early access</a>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div>
+          <div class="hero-kicker">For parents and families</div>
+          <h1 class="hero-title">Give your child a financial head start.</h1>
+          <p class="hero-subtitle">
+            The government seeds the account. Futuro helps it grow.
+          </p>
+          <p class="hero-tagline">
+            A simple S&amp;P 500 investment account for kids with a shareable gift link that family and friends can use to contribute instantly.
+          </p>
+          <div class="hero-actions">
+            <a href="#cta" class="btn btn-primary">Get early access</a>
+            <a href="#how" class="btn btn-outline">See how it works</a>
+          </div>
+          <p class="hero-note">
+            Small gifts today. Big futures tomorrow. Turn birthdays and holidays into compounding moments.
+          </p>
+        </div>
+
+        <div class="hero-right">
+          <div class="phone-frame" aria-label="Preview of Futuro app">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="child-row">
+                <div class="child-chip">
+                  <div class="child-avatar">M</div>
+                  <div class="child-meta">
+                    <span class="child-name">Mia</span>
+                    <span class="child-tag">Age 1 · Trump account linked</span>
+                  </div>
+                </div>
+                <div class="child-pill">S&amp;P 500 only</div>
+              </div>
+
+              <div class="balance-block">
+                <div class="balance-label">Current balance</div>
+                <div class="balance-value">$3,420.18</div>
+                <div class="balance-sub">+ $820 this year from gifts</div>
+              </div>
+
+              <div class="mini-chart">
+                <div class="mini-chart-line"></div>
+              </div>
+
+              <div class="phone-footer">
+                <div class="stat-pill">
+                  <div class="stat-label">Projected at 18</div>
+                  <div class="stat-value">$24,300</div>
+                </div>
+                <button class="gift-btn" type="button">Send a gift</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title">Government seed plus family gifts plus automatic S&amp;P 500 investing.</h2>
+        <p class="section-subtitle">
+          Futuro connects to the new national child investing program and wraps it in a simple flow for parents, grandparents, and friends.
+        </p>
+
+        <div class="three-cols">
+          <article class="info-card">
+            <div class="info-icon">👶</div>
+            <h3 class="info-title">Create your child account</h3>
+            <p class="info-body">
+              Add a photo, name, and birthday. We detect the government seed and link the underlying account behind the scenes.
+            </p>
+          </article>
+          <article class="info-card">
+            <div class="info-icon">🔗</div>
+            <h3 class="info-title">Share your gift link</h3>
+            <p class="info-body">
+              Get one private link for your child. Family and friends can contribute in one tap using card or bank.
+            </p>
+          </article>
+          <article class="info-card">
+            <div class="info-icon">📈</div>
+            <h3 class="info-title">Watch it grow automatically</h3>
+            <p class="info-body">
+              Every contribution goes into a low cost S&amp;P 500 index fund and stays invested according to program rules until adulthood.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- The math -->
+      <section id="math">
+        <div class="section-label">The math</div>
+        <h2 class="section-title">See what your child account could be worth.</h2>
+        <p class="section-subtitle">
+          Start with the government seed, add a monthly amount you feel comfortable with, and let compounding do the heavy lifting.
+        </p>
+
+        <div class="math-wrap">
+          <div class="slider-row">
+            <label class="slider-label" for="contributionRange">
+              Monthly contribution
+            </label>
+            <input
+              id="contributionRange"
+              type="range"
+              min="50"
+              max="300"
+              step="50"
+              value="200"
+            />
+            <div id="sliderValue" class="slider-value">
+              $200 per month
+            </div>
+          </div>
+
+          <div class="math-grid">
+            <div class="math-card">
+              <div class="math-label">Estimated balance at age 18</div>
+              <div id="age18Value" class="math-value">$86,000</div>
+            </div>
+            <div class="math-card">
+              <div class="math-label">Estimated balance at age 30</div>
+              <div id="age30Value" class="math-value">$173,000</div>
+            </div>
+          </div>
+
+          <div class="math-note">
+            Compounding example assumes a $1,000 government seed, consistent monthly contributions, dividends reinvested, and a 7 percent average annual return based on historical S&amp;P 500 performance. Markets go up and down. The habit is the part you control.
+          </div>
+        </div>
+
+        <p style="margin-top:14px;font-size:14px;color:var(--text-muted);">
+          Compounding is the most powerful gift you can give.
+        </p>
+      </section>
+
+      <!-- Why Futuro -->
+      <section id="why">
+        <div class="section-label">Why Futuro</div>
+        <h2 class="section-title">Built for families, not finance experts.</h2>
+        <p class="section-subtitle">
+          Simple by default, transparent by design, and aligned with the new national investing infrastructure for kids.
+        </p>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-title">Simple by default</div>
+            <div class="why-body">
+              One clear asset, one balance, one path. No trading screen or confusing menus, just the S&amp;P 500.
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Family friendly</div>
+            <div class="why-body">
+              Designed for parents, grandparents, aunts, uncles, and friends who want to give something that lasts.
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Built on the new system</div>
+            <div class="why-body">
+              Futuro connects to the federal Trump Account program and other custodial rails instead of trying to replace them.
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-title">Gifting engine</div>
+            <div class="why-body">
+              Baby showers, birthdays, holidays, small wins. Every moment can flow into the same compounding account.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="cta">
+        <div class="cta-band">
+          <div class="cta-band-title">
+            Be part of the first generation using America’s new investing program for kids.
+          </div>
+          <div class="cta-band-sub">
+            We are inviting a small group of early families, community leaders, and donors to help shape Futuro. Leave your email and we will reach out as soon as the product is ready.
+          </div>
+          <form
+            class="cta-form"
+            onsubmit="event.preventDefault(); alert('Thank you for your interest in Futuro.');"
+          >
+            <input
+              type="email"
+              required
+              placeholder="Enter your email"
+              class="cta-input"
+            />
+            <button type="submit" class="btn btn-primary">
+              Get early access
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© Futuro. Concept preview for early product exploration.</div>
+      <div>
+        <a href="#!">Terms</a> ·
+        <a href="#!">Privacy</a> ·
+        <a href="#!">Disclosures</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple compounding calculator for the slider
+    function formatCurrency(n) {
+      return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    }
+
+    function computeFutureValue(monthly, years) {
+      const seed = 1000;
+      const r = 0.07;
+      const n = years;
+      const annual = monthly * 12;
+      const seedPart = seed * Math.pow(1 + r, n);
+      const contribPart = annual * ((Math.pow(1 + r, n) - 1) / r);
+      return seedPart + contribPart;
+    }
+
+    function updateMath() {
+      const slider = document.getElementById("contributionRange");
+      const sliderValue = document.getElementById("sliderValue");
+      const age18Value = document.getElementById("age18Value");
+      const age30Value = document.getElementById("age30Value");
+
+      const monthly = parseInt(slider.value, 10);
+      sliderValue.textContent = "$" + monthly + " per month";
+
+      const v18 = computeFutureValue(monthly, 18);
+      const v30 = computeFutureValue(monthly, 30);
+
+      age18Value.textContent = formatCurrency(v18);
+      age30Value.textContent = formatCurrency(v30);
+    }
+
+    document.getElementById("contributionRange").addEventListener("input", updateMath);
+    updateMath();
+  </script>
+</body>
+</html>
